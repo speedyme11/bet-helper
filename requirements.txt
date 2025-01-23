@@ -1,0 +1,13 @@
+psycopg2-binary
+asyncpg
+SQLAlchemy
+Flask
+Bootstrap_Flask
+Flask_CKEditor
+Flask_Login
+Flask-Gravatar
+Flask_WTF
+WTForms
+Werkzeug
+flask_sqlalchemy
+gunicorn
