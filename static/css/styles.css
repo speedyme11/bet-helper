@@ -1,0 +1,16 @@
+.forgot-password{
+    text-decoration: underline;
+    font-weight: 500;
+    color: blue;
+}
+
+.create-account{
+    text-decoration: underline;
+    font-weight: 500;
+    color: darkgreen;
+}
+
+.flash{
+    color: crimson;
+    font-weight: 500;
+}
