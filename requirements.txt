@@ -11,3 +11,5 @@ WTForms
 Werkzeug
 flask_sqlalchemy
 gunicorn
+python-dotenv
+bleach
