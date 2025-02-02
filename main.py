@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.security import generate_password_hash, check_password_hash
 import bleach
 from .forms import LoginForm, RegisterForm
-from .__init__ import create_app
+from .__init__ import WebScraping, create_app
 from .database import db
 from .database_objects import Users
 
@@ -16,7 +16,7 @@ bootstrap = Bootstrap5(app=app)
 with app.app_context():
     db.create_all()
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/', methods=['GET', 'POST'])
 def landing_page():
     """This will be the landing page when users navigate to the site. A login page."""
 
@@ -28,10 +28,10 @@ def landing_page():
             return redirect(url_for("register"))
         else:
             if email:
-                return "hello"
+                return redirect(url_for("player_stats"))
     return render_template("login.html", form=form)
 
-@app.route("/register", methods=["GET", "POST"])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     """This will handle the user registration."""
 
@@ -50,6 +50,13 @@ def register():
             return redirect(url_for("landing_page"))
         
     return render_template("register.html", form=form)
+
+@app.route('/stats', methods=['GET', 'POST'])
+def player_stats():
+    site = WebScraping
+    page = site.get_beautiful(url="")
+
+    return render_template("player-stats.html")
 
 
 if __name__ == "__main__":

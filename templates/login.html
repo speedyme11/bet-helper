@@ -1,11 +1,11 @@
-{% from "bootstrap5/form.html" import render_form %}{% block content %}{% include "base.html" %}
+{% from "bootstrap5/form.html" import render_field %}{% block content %}{% include "base.html" %}
  
 <!-- Page Header -->
 <header
   class="masthead"
   style="background-image: url('#')"
 >
-  <div class="container position-relative px-4 px-lg-5">
+  <!-- <div class="container position-relative px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-md-10 col-lg-8 col-xl-7">
         <div class="page-heading">
@@ -13,15 +13,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </header>
 
 <main class="mb-4">
-  <div class="container">
-    <div class="row">
-      <!-- TODO: add a flash message here for users registering twice -->
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <!--Create a flash message-->
+  <div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="row w-100">
+      <!-- Flash message section -->
+      <div class="col-lg-8 col-md-10 mx-auto text-left">
         {% with messages = get_flashed_messages() %}
           {% if messages %}
             {% for message in messages %}
@@ -29,16 +28,31 @@
             {% endfor %}
           {% endif %}
         {% endwith %}
-        <!--TODO: render login form here-->
-        {{ render_form(form) }}
-        <!-- Add the register link -->
-        <div class="text-center mt-3">
-          <a href="{{ url_for('register') }}" class="create-account">
-              Don't have an account? Create Account
-        <!-- Add the Forgot Password link -->
+        <!-- Login form -->
+        <div class="form-container">
+          <div class="input-group">
+            {{ render_field(form.email, class="form-input") }}
+          </div>
+          <div class="input-group">
+            {{ render_field(form.password, class="form-input") }}
+          </div>
+        </div>
+        <!-- Forgot Password link -->
         <div class="text-center mt-3">
           <a href="#" class="forgot-password">
-              Forgot Password?
+            Forgot Password?
+          </a>
+        </div>
+        <div class="form-container">
+          {{ render_field(form.submit) }}
+        </div>
+        <!-- Register link -->
+        <div class="text-center mt-3">
+          <a href="{{ url_for('register') }}" class="create-account">
+            Don't have an account? Create Account
+          </a>
+        </div>
+        
       </div>
     </div>
   </div>

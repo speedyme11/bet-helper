@@ -13,3 +13,5 @@ flask_sqlalchemy
 gunicorn
 python-dotenv
 bleach
+bs4
+requests
